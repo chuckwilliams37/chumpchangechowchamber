@@ -3,10 +3,12 @@ extends application_layout
 block content
     .container.welcome_message_container
         p Welcome to #{title}
+    div(ng-controller='QueryManagerCtrl')
     .container
         .row
             .col-sm-6
                 include input_options/component
             .col-sm-6
                 include result_output/component
+    
             
