@@ -3,14 +3,10 @@ extends ../component_layout
 block component
   form.input_options_container(ng-controller="InputOptionsCtrl",name="recipeInputsForm")
     .form-group(ng-class="{'has-error': recipeInputsForm.mealType.$error.required}")
-      label.control-label(for="mealType") What kind of meal you thinking? {{recipeInputsForm.mealType.$error.required}}
+      label.control-label(for="mealType") What kind of meal you thinking (e.g. mexican, sandwich, roast)? {{recipeInputsForm.mealType.$error.required ? 'This is required' : ''}}
       input.form-control(name="mealType",ng-model="recipeQuery.searchPhrase", required="")
     accordion(close-others='oneAtATime')
       accordion-group(heading="What's in the pantry?" is-open="true")
         include ../whats_in_the_pantry/component
-      accordion-group(heading="What's in the fridge?" is-open="true")
-        | empty
-      accordion-group(heading="In the mood for... ?" is-open="false")
-        | empty
-      accordion-group(heading="What's in the pantry" is-open="false")
-        | empty
+      accordion-group(heading="Avoiding anything?" is-open="true")
+        include ../avoiding_anything/component

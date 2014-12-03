@@ -1,0 +1,10 @@
+.container(ng-repeat="match in result.matches")
+  .row
+    .col-sm-12
+      h4 {{match.recipeName}}
+  .row
+    .col-sm-4
+      rating(ng-model="match.rating", readonly="true",max="5")
+    .col-sm-8
+      img(ng-repeat='pic in match.smallImageUrls',src='{{pic}}')
+  

@@ -1,7 +1,21 @@
 //result_output/component.jade
-.container(ng-controller="ResultOutputCtlr")
+.col-sm-12(ng-controller="ResultOutputCtlr")
   .row
-    header.col-sm-12 
-      button.btn.btn-sm(ng-click="doRecipeSearch()") Let's see what we can find...
+    header.col-sm-12
+      .form-group
+        button.btn.btn-default.btn-lg(ng-click="doRecipeSearch()") Let's see what we can find...
   .row
+    .col-sm-12
+      progressbar.progress-striped.active(max='200', value='200', type='danger',ng-class="{'hidden': recipeQuery.pendingPromises.length==0}")
+        i Searching for recipes...
+  .row.form-group
+    .col-sm-8
+      alert(ng-repeat='request in recipeQuery.queryParamVariants')
+        Looking for {{request.q}} {{request['allowedIngredient[]'].length ? 'with' : ''}} {{request['allowedIngredient[]']}}
+  .row.form-group
+    .col-sm-12
+      accordion(close-others='oneAtATime')
+        accordion-group(ng-repeat='result in recipeQuery.lastResults',heading="{{result.reqParams.q}} {{result.reqParams['allowedIngredient[]'].length ? 'with' : ''}} {{result.reqParams['allowedIngredient[]']}} ({{result.totalMatchCount}})", is-open="false")
+          h3 Some selections:
+          include match_renderer
     //output junk here

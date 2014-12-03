@@ -1,0 +1,10 @@
+extends ../component_layout
+
+block component
+  .whats_in_the_pantry_container(ng-controller="avoidingAnythingCtlr")
+    header 
+    .body
+      .form-group
+        textarea.form-control(name="avoiding",width='80',height='5',ng-model="avoidList")
+        label.form-label(for="avoiding") Separate items with a comma
+    footer
