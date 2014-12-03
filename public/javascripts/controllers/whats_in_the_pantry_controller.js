@@ -5,7 +5,7 @@ angular.module('ChumpChangeChowChamberApp')
     console.log ("What's in the pantry?");
     
     $scope.pantryList = 'Onion, garlic';
-    $scope.pantryArray = null;
+    $scope.pantryArray = [];
     $scope.recipeQuery = recipeQuery;
     
     $scope.$watch('pantryList' ,function ( newValue, oldValue ) {
@@ -15,8 +15,12 @@ angular.module('ChumpChangeChowChamberApp')
     });
     
     $scope.$watch('pantryArray' , function (newValue, oldValue) {
+      console.log ("pantryArray Changed as a result..." , arguments);
       if (newValue.length != oldValue.length) {
-        $rootScope.$emit('invokeRecipeSearch');
+        angular.forEach ( newValue , function ( ingredient ){
+          console.log ("searching for: " , ingredient )
+          $rootScope.$emit('invokeRecipeSearch', {query: $scope.recipeQuery.newQuery(ingredient) } );
+        }) 
       }
     })
   
