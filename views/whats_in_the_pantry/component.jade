@@ -4,6 +4,6 @@ block component
   .whats_in_the_pantry_container(ng-controller="whatsInThePantryCtlr")
     header 
     .body
-      input(id="pantry")
+      textarea(id="pantry",width='80',height='5',ng-model="pantryList")
       label Separate items with a comma
     footer
