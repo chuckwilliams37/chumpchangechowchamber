@@ -10,11 +10,18 @@ angular.module('ChumpChangeChowChamberApp')
   $scope.results 
   ***/
   
-  $rootScope.$on('invokeRecipeSearch', function ( event, queryObj ) {
+  $rootScope.$on('invokeRecipeSearch', function ( event ) {
     console.log("Invoking.....", arguments);
-    $scope.recipePromises.push( $scope.recipes.get(queryObj.query).then( $scope.onRecipeResult) );
     
-    
+    if ( $scope.recipeQuery.pantryArray.length ) {
+      for ( var i =0; i< $scope.recipeQuery.pantryArray.length; i++ ){
+        var ingredient = $scope.recipeQuery.pantryArray[i].trim();
+        console.log ("searching for: " , ingredient )
+        if ( ingredient.length ) {
+          $scope.recipePromises.push( $scope.recipes.get(  $scope.recipeQuery.getQueryStringObj( i ) ).then( $scope.onRecipeResult) );
+        };
+      };
+    };
   });
   
   

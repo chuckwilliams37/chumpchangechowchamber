@@ -1,5 +1,9 @@
 //input_options_controller
-angular.module('ChumpChangeChowChamberApp').controller('InputOptionsCtrl', function ($scope) {
+angular.module('ChumpChangeChowChamberApp').controller('InputOptionsCtrl', function ($scope, recipeQuery) {
+
+  $scope.recipeQuery = recipeQuery;
+
+  console.log ($scope.recipeInputsForm);
 
   $scope.inputOptionGroups = [
     {
