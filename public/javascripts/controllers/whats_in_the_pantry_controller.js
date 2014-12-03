@@ -18,8 +18,11 @@ angular.module('ChumpChangeChowChamberApp')
       console.log ("pantryArray Changed as a result..." , arguments);
       if (newValue.length != oldValue.length) {
         angular.forEach ( newValue , function ( ingredient ){
+          ingredient = ingredient.trim();
           console.log ("searching for: " , ingredient )
-          $rootScope.$emit('invokeRecipeSearch', {query: $scope.recipeQuery.newQuery(ingredient) } );
+          if ( ingredient.length ) {
+            $rootScope.$emit('invokeRecipeSearch', {query: $scope.recipeQuery.getIngredientQueryParam(ingredient) } );
+          }
         }) 
       }
     })

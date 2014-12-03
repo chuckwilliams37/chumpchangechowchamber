@@ -6,7 +6,7 @@ angular.module('ChumpChangeChowChamberApp', ['ui.bootstrap','restangular','ngRou
     var yummly = {
       appId : 'a86b6d59',
       key : 'a7c56372c0412e6698ec5d34d33f9101',
-      baseUrl: "https://ismaelc-yummly1.p.mashape.com/api"
+      baseUrl: "https://api.yummly.com/v1/api"
     };
     
     RestangularProvider.setBaseUrl(yummly.baseUrl);
