@@ -9,6 +9,21 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+var sass = require('node-sass');
+var sassMiddleware = require('node-sass-middleware');
+
+app.use(
+     sassMiddleware({
+         src: __dirname + '/sass', //where the sass files are 
+         dest: __dirname + '/public/stylesheets', //where css should go
+         prefix:  '/stylesheets',
+         debug: true // obvious
+     })
+ );
+
+app.use(express.static( path.join( __dirname, 'public' ) ) );
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use('/javascripts',  express.static(__dirname + '/javascripts'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +35,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
@@ -56,6 +71,17 @@ app.use(function(err, req, res, next) {
     });
 });
 
+
+
+
+
+
+
+// The static middleware must come after the sass middleware
+//app.use(express.static( path.join( __dirname, 'public' ) ) );
+  
 app.listen(process.env.PORT);
 
 module.exports = app;
+
+

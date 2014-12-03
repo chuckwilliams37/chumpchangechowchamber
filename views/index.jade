@@ -1,5 +1,12 @@
-extends layout
+extends application_layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    .container.welcome_message_container
+        p Welcome to #{title}
+    .container
+        .row
+            .col-sm-6
+                include input_options/component
+            .col-sm-6
+                include result_output/component
+            

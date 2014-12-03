@@ -1,0 +1,22 @@
+/********************************
+                                      __    __  .__                      
+_____  ______ ______     ______ _____/  |__/  |_|__| ____    ____  ______
+\__  \ \____ \\____ \   /  ___// __ \   __\   __\  |/    \  / ___\/  ___/
+ / __ \|  |_> >  |_> >  \___ \\  ___/|  |  |  | |  |   |  \/ /_/  >___ \ 
+(____  /   __/|   __/  /____  >\___  >__|  |__| |__|___|  /\___  /____  >
+     \/|__|   |__|          \/     \/                   \//_____/     \/ 
+
+
+**************************/
+/**************************/
+body {
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+.utilities .border.thin, .component_container .border.thin {
+  border-width: 1px; }
+.utilities .border.hot-orange, .component_container .border.hot-orange {
+  border-color: #ff6633; }
+
+.component_container {
+  border: #ff6633; }
